@@ -39,7 +39,7 @@ class CarInterface(CarInterfaceBase):
     else:
       CarInterfaceBase.configure_torque_tune(candidate, ret.lateralTuning)
 
-      ret.steerActuatorDelay = 0.42          #       ret.steerActuatorDelay = 0.12  # Default delay, Prius has larger delay
+      ret.steerActuatorDelay = 0.60          #       ret.steerActuatorDelay = 0.12  # Default delay, Prius has larger delay
       ret.steerLimitTimer = 0.9       #   ret.steerLimitTimer = 0.4
 
       if 0x23 in fingerprint[0]:  # Detect if ZSS is present
