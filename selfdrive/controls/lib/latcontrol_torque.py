@@ -32,8 +32,6 @@ LAT_PLAN_MIN_IDX = 5
 
 ERROR_PERCENT = 1.0
 
-rollPercent = params.roll * 0.8
-
 def get_predicted_lateral_jerk(lat_accels, t_diffs):
   # compute finite difference between subsequent model_data.acceleration.y values
   # this is just two calls of np.diff followed by an element-wise division
@@ -167,8 +165,8 @@ class LatControlTorque(LatControl):
       output_torque = 0.0
       pid_log.active = False
     else:
-      actual_curvature_vm = -VM.calc_curvature(math.radians(CS.steeringAngleDeg - params.angleOffsetDeg), CS.vEgo, rollPercent)
-      roll_compensation = rollPercent * ACCELERATION_DUE_TO_GRAVITY
+      actual_curvature_vm = -VM.calc_curvature(math.radians(CS.steeringAngleDeg - params.angleOffsetDeg), CS.vEgo, (params.roll * 0.8))
+      roll_compensation = (params.roll * 0.8) * ACCELERATION_DUE_TO_GRAVITY
       actual_lateral_jerk = 0.0
       if self.use_steering_angle:
         actual_curvature = actual_curvature_vm
@@ -214,7 +212,7 @@ class LatControlTorque(LatControl):
       if self.use_nn and model_good:
         # update past data
         pitch = 0
-        roll = rollPercent
+        roll = (params.roll * 0.8)
         if len(llk.calibratedOrientationNED.value) > 1:
           pitch = self.pitch.update(llk.calibratedOrientationNED.value[1])
           roll = roll_pitch_adjust(roll, pitch)
