@@ -38,7 +38,7 @@ V_EGO_COST = 0.
 A_EGO_COST = 0.
 J_EGO_COST = 5.0
 A_CHANGE_COST = 200.
-DANGER_ZONE_COST = 60.   # old = 100
+DANGER_ZONE_COST = 30.   # old = 100
 CRASH_DISTANCE = .25
 LEAD_DANGER_FACTOR = 0.75
 LIMIT_COST = 1e6
@@ -80,7 +80,7 @@ def get_T_FOLLOW(personality=custom.LongitudinalPersonalitySP.standard):
   elif personality==custom.LongitudinalPersonalitySP.moderate:
     return 1.25
   elif personality==custom.LongitudinalPersonalitySP.aggressive:
-    return 0.7    # old = 1.0
+    return 0.9    # old = 1.0
   elif personality==custom.LongitudinalPersonalitySP.overtake:
     return 0.1     # old = 0.25
   else:
