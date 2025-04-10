@@ -38,7 +38,7 @@ V_EGO_COST = 0.
 A_EGO_COST = 0.
 J_EGO_COST = 5.0
 A_CHANGE_COST = 200.
-DANGER_ZONE_COST = 30.   # old = 100
+DANGER_ZONE_COST = 10.   # old = 100
 CRASH_DISTANCE = .25
 LEAD_DANGER_FACTOR = 0.75
 LIMIT_COST = 1e6
@@ -59,13 +59,13 @@ STOP_DISTANCE = 9.0   # old = 6.0
 
 def get_jerk_factor(personality=custom.LongitudinalPersonalitySP.standard):
   if personality==custom.LongitudinalPersonalitySP.relaxed:
-    return 1.0
+    return 0.9    # 1.0
   elif personality==custom.LongitudinalPersonalitySP.standard:
-    return 1.0
+    return 0.8      # 1.0
   elif personality==custom.LongitudinalPersonalitySP.moderate:
-    return 0.9
+    return 0.7      # 0.9
   elif personality==custom.LongitudinalPersonalitySP.aggressive:
-    return 0.7      #old = 0.8
+    return 0.5      #old = 0.8
   elif personality==custom.LongitudinalPersonalitySP.overtake:
     return 0.1
   else:
