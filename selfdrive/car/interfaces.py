@@ -1,4 +1,4 @@
- import capnp
+import capnp
 import json
 import os
 import numpy as np
