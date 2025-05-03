@@ -85,7 +85,8 @@ def register(show_spinner=False) -> str | None:
 
       if time.monotonic() - start_time > 10 and show_spinner:
         spinner.update(f"registering device - serial: {serial}, IMEI: ({imei1}, {imei2})")
-
+        return UNREGISTERED_DONGLE_ID
+        
     if show_spinner:
       spinner.close()
 
