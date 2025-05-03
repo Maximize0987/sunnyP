@@ -38,7 +38,7 @@ V_EGO_COST = 0.
 A_EGO_COST = 0.
 J_EGO_COST = 5.0
 A_CHANGE_COST = 200.
-DANGER_ZONE_COST = 100.
+DANGER_ZONE_COST = 1.      # old = 100.
 CRASH_DISTANCE = .25
 LEAD_DANGER_FACTOR = 0.75
 LIMIT_COST = 1e6
@@ -55,7 +55,7 @@ T_IDXS = np.array(T_IDXS_LST)
 FCW_IDXS = T_IDXS < 5.0
 T_DIFFS = np.diff(T_IDXS, prepend=[0.])
 COMFORT_BRAKE = 2.5
-STOP_DISTANCE = 6.0
+STOP_DISTANCE = 9.0     # old = 6.0
 
 def get_jerk_factor(personality=custom.LongitudinalPersonalitySP.standard):
   if personality==custom.LongitudinalPersonalitySP.relaxed:
@@ -63,11 +63,11 @@ def get_jerk_factor(personality=custom.LongitudinalPersonalitySP.standard):
   elif personality==custom.LongitudinalPersonalitySP.standard:
     return 1.0
   elif personality==custom.LongitudinalPersonalitySP.moderate:
-    return 0.9
+    return 0.8   #  0.9
   elif personality==custom.LongitudinalPersonalitySP.aggressive:
-    return 0.8
+    return 0.6   # 0.8
   elif personality==custom.LongitudinalPersonalitySP.overtake:
-    return 0.1
+    return 0.05  # 0.1
   else:
     raise NotImplementedError("Longitudinal personality not supported")
 
@@ -80,9 +80,9 @@ def get_T_FOLLOW(personality=custom.LongitudinalPersonalitySP.standard):
   elif personality==custom.LongitudinalPersonalitySP.moderate:
     return 1.25
   elif personality==custom.LongitudinalPersonalitySP.aggressive:
-    return 1.0
+    return 0.9    # 1.0
   elif personality==custom.LongitudinalPersonalitySP.overtake:
-    return 0.25
+    return 0.05     #  0.25
   else:
     raise NotImplementedError("Longitudinal personality not supported")
 
