@@ -84,7 +84,7 @@ function launch {
   # start manager
   cd system/manager
   if [ ! -f $DIR/prebuilt ]; then
-    ./build.py
+    ./build.py && touch "$DIR/prebuilt"     #    make prebuilt     ./build.py
   fi
 
   ./mapd_installer.py; ./manager.py
