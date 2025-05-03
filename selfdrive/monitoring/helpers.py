@@ -370,7 +370,10 @@ class DriverMonitoring:
       alert = EventName.promptDriverDistracted if self.active_monitoring_mode else EventName.promptDriverUnresponsive
     elif self.awareness <= self.threshold_pre:
       # pre green alert
-      alert = EventName.preDriverDistracted if self.active_monitoring_mode else EventName.preDriverUnresponsive
+      self.awareness = 1.
+      self.awareness_active = 1.
+      self.awareness_passive = 1.
+      #alert = EventName.preDriverDistracted if self.active_monitoring_mode else EventName.preDriverUnresponsive
 
     if alert is not None:
       self.current_events.add(alert)
