@@ -83,9 +83,9 @@ def register(show_spinner=False) -> str | None:
         backoff = min(backoff + 1, 15)
         time.sleep(backoff)
 
-      if time.monotonic() - start_time > 60 and show_spinner:
-        spinner.update(f"registering device - serial: {serial}, IMEI: ({imei1}, {imei2})")
-        return UNREGISTERED_DONGLE_ID  # hotfix to prevent an infinite wait for registration
+      if time.monotonic() - start_time > 30 and show_spinner:                        # lowered to 30 from 60
+        dongle_id = UNREGISTERED_DONGLE_ID                                           # from frogpilot skip           #   spinner.update(f"registering device - serial: {serial}, IMEI: ({imei1}, {imei2})")
+        break                                                                        # from frogpilot skip           #   return UNREGISTERED_DONGLE_ID  # hotfix to prevent an infinite wait for registration
 
     if show_spinner:
       spinner.close()
