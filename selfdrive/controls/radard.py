@@ -126,6 +126,14 @@ def laplacian_pdf(x: float, mu: float, b: float):
   b = max(b, 1e-4)
   return math.exp(-abs(x-mu)/b)
 
+def potential_far_lead(self, standstill: bool, model_data: capnp._DynamicStructReader):
+  if standstill or self.vLead < 1 or abs(self.yRel) > 1:
+     return False
+
+   left_lane = interp(self.dRel, model_data.laneLines[1].x, model_data.laneLines[1].y)
+   right_lane = interp(self.dRel, model_data.laneLines[2].x, model_data.laneLines[2].y)
+
+  return left_lane < -self.yRel < right_lane
 
 def match_vision_to_track(v_ego: float, lead: capnp._DynamicStructReader, tracks: dict[int, Track]):
   offset_vision_dist = lead.x[0] - RADAR_TO_CAMERA
