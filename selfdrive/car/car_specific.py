@@ -132,27 +132,27 @@ class CarSpecificEvents:
                            allow_button_cancel=True):
     events = Events()
 
-    if CS.doorOpen:
-      events.add(EventName.doorOpen)
-    if CS.seatbeltUnlatched:
-      events.add(EventName.seatbeltNotLatched)
-    if CS.gearShifter != GearShifter.drive and (extra_gears is None or
-       CS.gearShifter not in extra_gears):
-      events.add(EventName.wrongGear)
-    if CS.gearShifter == GearShifter.reverse:
-      events.add(EventName.reverseGear)
+    #if CS.doorOpen:
+      #events.add(EventName.doorOpen)
+    #if CS.seatbeltUnlatched:
+      #events.add(EventName.seatbeltNotLatched)
+    #if CS.gearShifter != GearShifter.drive and (extra_gears is None or
+       #CS.gearShifter not in extra_gears):
+      #events.add(EventName.wrongGear)
+    #if CS.gearShifter == GearShifter.reverse:
+      #events.add(EventName.reverseGear)
     if not CS.cruiseState.available:
       events.add(EventName.wrongCarMode)
-    if CS.espDisabled:
-      events.add(EventName.espDisabled)
-    if CS.espActive:
-      events.add(EventName.espActive)
+    #if CS.espDisabled:
+      #events.add(EventName.espDisabled)
+    #if CS.espActive:
+      #events.add(EventName.espActive)
     if CS.stockFcw:
       events.add(EventName.stockFcw)
     if CS.stockAeb:
       events.add(EventName.stockAeb)
-    if CS.vEgo > MAX_CTRL_SPEED:
-      events.add(EventName.speedTooHigh)
+    #if CS.vEgo > MAX_CTRL_SPEED:
+      #events.add(EventName.speedTooHigh)
     if CS.cruiseState.nonAdaptive:
       events.add(EventName.wrongCruiseMode)
     if CS.brakeHoldActive and self.CP.openpilotLongitudinalControl:
