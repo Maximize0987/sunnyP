@@ -217,7 +217,7 @@ class LateralLagEstimator:
       liveDelay.status = log.LiveDelayData.Status.unestimated
 
     if liveDelay.status == log.LiveDelayData.Status.estimated:
-      liveDelay.lateralDelay = valid_mean_lag
+      liveDelay.lateralDelay = valid_mean_lag + 0.009 # test fix lag for TR7 model
     else:
       liveDelay.lateralDelay = self.initial_lag
 
