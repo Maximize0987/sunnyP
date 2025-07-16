@@ -37,6 +37,8 @@ RPY_INIT = np.array([0.0,0.0,0.0])
 WIDE_FROM_DEVICE_EULER_INIT = np.array([0.0, 0.0, 0.0])
 HEIGHT_INIT = np.array([1.22])
 
+RPY_OFFSET = np.array([0.0,0.0,0.00218])      # attempt to keep vehicle away from left lane line
+
 # These values are needed to accommodate the model frame in the narrow cam
 if HARDWARE.get_device_type() == 'mici':
   PITCH_LIMITS = np.array([-0.143101, 0.22235988])
@@ -240,6 +242,8 @@ class Calibrator:
     liveCalibration.validBlocks = self.valid_blocks
     liveCalibration.calStatus = self.cal_status
     liveCalibration.calPerc = min(100 * (self.valid_blocks * BLOCK_SIZE + self.idx) // (INPUTS_NEEDED * BLOCK_SIZE), 100)
+
+    #rpyCalib = np.subtract(rpyCalib, RPY_OFFSET) 
     liveCalibration.rpyCalib = smooth_rpy.tolist()
     liveCalibration.rpyCalibSpread = self.calib_spread.tolist()
     liveCalibration.wideFromDeviceEuler = self.wide_from_device_euler.tolist()
