@@ -243,7 +243,8 @@ class Calibrator:
     liveCalibration.calStatus = self.cal_status
     liveCalibration.calPerc = min(100 * (self.valid_blocks * BLOCK_SIZE + self.idx) // (INPUTS_NEEDED * BLOCK_SIZE), 100)
 
-    #rpyCalib = np.subtract(rpyCalib, RPY_OFFSET) 
+    smooth_rpy = np.subtract(smooth_rpy, RPY_OFFSET)    # added to test yaw offset
+    
     liveCalibration.rpyCalib = smooth_rpy.tolist()
     liveCalibration.rpyCalibSpread = self.calib_spread.tolist()
     liveCalibration.wideFromDeviceEuler = self.wide_from_device_euler.tolist()
