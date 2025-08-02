@@ -25,7 +25,7 @@ SPEED, ACCEL = 0, 1     # Kalman filter states enum
 V_EGO_STATIONARY = 4.   # no stationary object flag below this speed
 
 RADAR_TO_CENTER = 2.7   # (deprecated) RADAR is ~ 2.7m ahead from center of car
-RADAR_TO_CAMERA = 1.52  # 1.78 long time tested # RADAR is ~ 1.5m ahead from center of mesh frame
+RADAR_TO_CAMERA = 1.6  # 1.78 long time tested # RADAR is ~ 1.5m ahead from center of mesh frame
 
 
 class KalmanParams:
@@ -191,8 +191,8 @@ def get_lead(v_ego: float, ready: bool, tracks: dict[int, Track], lead_msg: capn
       if (not lead_dict['status']) or (closest_track.dRel < lead_dict['dRel']):
         lead_dict = closest_track.get_RadarState()
 
-  if 'dRel' in lead_dict:
-    lead_dict['dRel'] -= 1.5    # attempting to add 3 meters to stopped distance
+  #if 'dRel' in lead_dict:
+    #lead_dict['dRel'] -= 1.5    # attempting to add 3 meters to stopped distance
     
   return lead_dict
 
