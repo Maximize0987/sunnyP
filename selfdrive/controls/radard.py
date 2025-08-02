@@ -192,7 +192,7 @@ def get_lead(v_ego: float, ready: bool, tracks: dict[int, Track], lead_msg: capn
         lead_dict = closest_track.get_RadarState()
 
   if 'dRel' in lead_dict:
-    lead_dict['dRel'] -= 3    # attempting to add 3 meters to stopped distance
+    lead_dict['dRel'] -= 1.5    # attempting to add 3 meters to stopped distance
     
   return lead_dict
 
