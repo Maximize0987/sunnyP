@@ -80,7 +80,7 @@ class RadarInterface(RadarInterfaceBase):
             self.pts[ii] = car.RadarData.RadarPoint.new_message()
             self.pts[ii].trackId = self.track_id
             self.track_id += 1
-          self.pts[ii].dRel = cpt['LONG_DIST'] - 2   # make code think lead is 2 meters closer for better stopped distance    # from front of car
+          self.pts[ii].dRel = cpt['LONG_DIST']  # make code think lead is 2 meters closer for better stopped distance    # from front of car
           self.pts[ii].yRel = -cpt['LAT_DIST']  # in car frame's y axis, left is positive
           self.pts[ii].vRel = cpt['REL_SPEED']
           self.pts[ii].aRel = float('nan')
