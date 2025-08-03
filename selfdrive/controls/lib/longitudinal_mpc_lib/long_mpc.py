@@ -108,17 +108,6 @@ def get_dynamic_personality(v_ego, personality=custom.LongitudinalPersonalitySP.
 def get_stopped_equivalence_factor(v_lead):
   return (v_lead**2) / (2 * COMFORT_BRAKE)
 
-#def get_stopped_equivalence_factor(v_lead, v_ego):
-  # KRKeegan this offset rapidly decreases the following distance when the lead pulls
-  # away, resulting in an early demand for acceleration.
-  #v_diff_offset = 0
-  #if np.all(v_lead - v_ego > 0):
-    #v_diff_offset = ((v_lead - v_ego) * 1.)
-    #v_diff_offset = np.clip(v_diff_offset, 0, STOP_DISTANCE / 2)
-    #v_diff_offset = np.maximum(v_diff_offset * ((15 - v_ego)/15), 0)
-  #distance = (v_lead**2) / (2 * COMFORT_BRAKE) + v_diff_offset
-  #return distance
-  
 def get_safe_obstacle_distance(v_ego, t_follow):
   return (v_ego**2) / (2 * COMFORT_BRAKE) + t_follow * v_ego + STOP_DISTANCE
 
@@ -126,8 +115,6 @@ def desired_follow_distance(v_ego, v_lead, t_follow=None):
   if t_follow is None:
     t_follow = get_T_FOLLOW()
   return get_safe_obstacle_distance(v_ego, t_follow) - get_stopped_equivalence_factor(v_lead)
-  #return get_safe_obstacle_distance(v_ego, t_follow) - get_stopped_equivalence_factor(v_lead, v_ego)
-  
 
 def gen_long_model():
   model = AcadosModel()
