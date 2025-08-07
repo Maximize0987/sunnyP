@@ -5,6 +5,8 @@ from opendbc.car.structs import RadarData
 from opendbc.car.toyota.values import DBC, TSS2_CAR
 from opendbc.car.interfaces import RadarInterfaceBase
 
+xdistance = np.array([0, 230], dtype=np.float32)
+yoffset = np.array([0.0, 0.4], dtype=np.float32)
 
 def _create_radar_can_parser(car_fingerprint):
   if car_fingerprint in TSS2_CAR:
@@ -78,6 +80,13 @@ class RadarInterface(RadarInterfaceBase):
             self.pts[ii] = RadarData.RadarPoint()
             self.pts[ii].trackId = self.track_id
             self.track_id += 1
+          xinput = int(cpt['LONG_DIST'])
+          yinput = float(cpt['LAT_DIST'])
+          yprint = round(yinput,2)
+          yoffsetoutput = float(np.interp(xinput, xdistance, yoffset)) 
+          yOO = (round(yoffsetoutput,2))
+          #print(f"Long: {xinput} Lat: {yprint} Score: {score}")
+          cpt['LAT_DIST'] = cpt['LAT_DIST'] #  - yOO        # + shifts to the right, - shifts to the left  
           self.pts[ii].dRel = cpt['LONG_DIST']  # from front of car
           self.pts[ii].yRel = -cpt['LAT_DIST']  # in car frame's y axis, left is positive
           self.pts[ii].vRel = cpt['REL_SPEED']
