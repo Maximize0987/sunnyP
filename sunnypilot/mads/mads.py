@@ -101,19 +101,19 @@ class ModularAssistiveDrivingSystem:
     self.events_sp.add(new_event)
 
   def update_events(self, CS: structs.CarState):
-    if not self.selfdrive.enabled and self.enabled:
-      if self.events.has(EventName.doorOpen):
-        self.replace_event(EventName.doorOpen, EventNameSP.silentDoorOpen)
-        self.transition_paused_state()
-      if self.events.has(EventName.seatbeltNotLatched):
-        self.replace_event(EventName.seatbeltNotLatched, EventNameSP.silentSeatbeltNotLatched)
-        self.transition_paused_state()
-      if self.events.has(EventName.wrongGear) and (CS.vEgo < 2.5 or CS.gearShifter == GearShifter.reverse):
-        self.replace_event(EventName.wrongGear, EventNameSP.silentWrongGear)
-        self.transition_paused_state()
-      if self.events.has(EventName.reverseGear):
-        self.replace_event(EventName.reverseGear, EventNameSP.silentReverseGear)
-        self.transition_paused_state()
+    #if not self.selfdrive.enabled and self.enabled:
+      #if self.events.has(EventName.doorOpen):
+        #self.replace_event(EventName.doorOpen, EventNameSP.silentDoorOpen)
+        #self.transition_paused_state()
+      #if self.events.has(EventName.seatbeltNotLatched):
+        #self.replace_event(EventName.seatbeltNotLatched, EventNameSP.silentSeatbeltNotLatched)
+        #self.transition_paused_state()
+      #if self.events.has(EventName.wrongGear) and (CS.vEgo < 2.5 or CS.gearShifter == GearShifter.reverse):
+        #self.replace_event(EventName.wrongGear, EventNameSP.silentWrongGear)
+        #self.transition_paused_state()
+      #if self.events.has(EventName.reverseGear):
+        #self.replace_event(EventName.reverseGear, EventNameSP.silentReverseGear)
+        #self.transition_paused_state()
       if self.events.has(EventName.brakeHold):
         self.replace_event(EventName.brakeHold, EventNameSP.silentBrakeHold)
         self.transition_paused_state()
