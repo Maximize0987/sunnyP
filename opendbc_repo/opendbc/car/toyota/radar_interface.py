@@ -4,6 +4,7 @@ from opendbc.car import Bus
 from opendbc.car.structs import RadarData
 from opendbc.car.toyota.values import DBC, TSS2_CAR
 from opendbc.car.interfaces import RadarInterfaceBase
+import numpy as np
 
 xdistance = np.array([0, 230], dtype=np.float32)
 yoffset = np.array([0.0, 0.4], dtype=np.float32)
