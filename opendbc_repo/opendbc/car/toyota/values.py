@@ -32,7 +32,7 @@ class CarControllerParams:
     ([5, 25], [0.36, 0.26]),
   )
 
-  MAX_LTA_DRIVER_TORQUE_ALLOWANCE = 150  # slightly above steering pressed allows some resistance when changing lanes
+  MAX_LTA_DRIVER_TORQUE_ALLOWANCE = 180    # MAX_LTA_DRIVER_TORQUE_ALLOWANCE = 150  # slightly above steering pressed allows some resistance when changing lanes
 
   def __init__(self, CP):
     if CP.flags & ToyotaFlags.RAISED_ACCEL_LIMIT:
@@ -608,7 +608,7 @@ FW_QUERY_CONFIG = FwQueryConfig(
   match_fw_to_car_fuzzy=match_fw_to_car_fuzzy,
 )
 
-STEER_THRESHOLD = 100
+STEER_THRESHOLD = 80       # old = STEER_THRESHOLD = 100
 
 # These cars have non-standard EPS torque scale factors. All others are 73
 EPS_SCALE = defaultdict(lambda: 73,
