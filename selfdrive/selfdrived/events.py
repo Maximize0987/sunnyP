@@ -385,19 +385,19 @@ EVENTS: dict[int, dict[str, Alert | AlertCallbackType]] = {
   },
 
   EventName.preLaneChangeLeft: {
-    ET.WARNING: Alert(
-      "Steer Left to Start Lane Change Once Safe",
-      "",
-      AlertStatus.normal, AlertSize.small,
-      Priority.LOW, VisualAlert.none, AudibleAlert.none, .1),
+    #ET.WARNING: Alert(
+      #"Steer Left to Start Lane Change Once Safe",
+      #"",
+      #AlertStatus.normal, AlertSize.small,
+      #Priority.LOW, VisualAlert.none, AudibleAlert.none, .1),
   },
 
   EventName.preLaneChangeRight: {
-    ET.WARNING: Alert(
-      "Steer Right to Start Lane Change Once Safe",
-      "",
-      AlertStatus.normal, AlertSize.small,
-      Priority.LOW, VisualAlert.none, AudibleAlert.none, .1),
+    #ET.WARNING: Alert(
+      #"Steer Right to Start Lane Change Once Safe",
+      #"",
+      #AlertStatus.normal, AlertSize.small,
+      #Priority.LOW, VisualAlert.none, AudibleAlert.none, .1),
   },
 
   EventName.laneChangeBlocked: {
@@ -409,11 +409,11 @@ EVENTS: dict[int, dict[str, Alert | AlertCallbackType]] = {
   },
 
   EventName.laneChange: {
-    ET.WARNING: Alert(
-      "Changing Lanes",
-      "",
-      AlertStatus.normal, AlertSize.small,
-      Priority.LOW, VisualAlert.none, AudibleAlert.none, .1),
+    #ET.WARNING: Alert(
+      #"Changing Lanes",
+      #"",
+      #AlertStatus.normal, AlertSize.small,
+      #Priority.LOW, VisualAlert.none, AudibleAlert.none, .1),
   },
 
   EventName.steerSaturated: {
@@ -481,7 +481,7 @@ EVENTS: dict[int, dict[str, Alert | AlertCallbackType]] = {
   },
 
   EventName.buttonEnable: {
-    ET.ENABLE: EngagementAlert(AudibleAlert.engage),
+    #ET.ENABLE: EngagementAlert(AudibleAlert.engage),
   },
 
   EventName.pcmDisable: {
@@ -489,8 +489,8 @@ EVENTS: dict[int, dict[str, Alert | AlertCallbackType]] = {
   },
 
   EventName.buttonCancel: {
-    ET.USER_DISABLE: EngagementAlert(AudibleAlert.disengage),
-    ET.NO_ENTRY: NoEntryAlert("Cancel Pressed"),
+    #ET.USER_DISABLE: EngagementAlert(AudibleAlert.disengage),
+    #ET.NO_ENTRY: NoEntryAlert("Cancel Pressed"),
   },
 
   EventName.brakeHold: {
@@ -598,8 +598,8 @@ EVENTS: dict[int, dict[str, Alert | AlertCallbackType]] = {
   },
 
   EventName.wrongGear: {
-    ET.SOFT_DISABLE: user_soft_disable_alert("Gear not D"),
-    ET.NO_ENTRY: NoEntryAlert("Gear not D"),
+    #ET.SOFT_DISABLE: user_soft_disable_alert("Gear not D"),
+    #ET.NO_ENTRY: NoEntryAlert("Gear not D"),
   },
 
   # This alert is thrown when the calibration angles are outside of the acceptable range.
@@ -614,30 +614,30 @@ EVENTS: dict[int, dict[str, Alert | AlertCallbackType]] = {
   },
 
   EventName.calibrationIncomplete: {
-    ET.PERMANENT: calibration_incomplete_alert,
-    ET.SOFT_DISABLE: soft_disable_alert("Calibration Incomplete"),
-    ET.NO_ENTRY: NoEntryAlert("Calibration in Progress"),
+    #ET.PERMANENT: calibration_incomplete_alert,
+    #ET.SOFT_DISABLE: soft_disable_alert("Calibration Incomplete"),
+    #ET.NO_ENTRY: NoEntryAlert("Calibration in Progress"),
   },
 
   EventName.calibrationRecalibrating: {
-    ET.PERMANENT: calibration_incomplete_alert,
-    ET.SOFT_DISABLE: soft_disable_alert("Device Remount Detected: Recalibrating"),
-    ET.NO_ENTRY: NoEntryAlert("Remount Detected: Recalibrating"),
+    #ET.PERMANENT: calibration_incomplete_alert,
+    #ET.SOFT_DISABLE: soft_disable_alert("Device Remount Detected: Recalibrating"),
+    #ET.NO_ENTRY: NoEntryAlert("Remount Detected: Recalibrating"),
   },
 
   EventName.doorOpen: {
-    ET.SOFT_DISABLE: user_soft_disable_alert("Door Open"),
-    ET.NO_ENTRY: NoEntryAlert("Door Open"),
+    #ET.SOFT_DISABLE: user_soft_disable_alert("Door Open"),
+    #ET.NO_ENTRY: NoEntryAlert("Door Open"),
   },
 
   EventName.seatbeltNotLatched: {
-    ET.SOFT_DISABLE: user_soft_disable_alert("Seatbelt Unlatched"),
-    ET.NO_ENTRY: NoEntryAlert("Seatbelt Unlatched"),
+    #ET.SOFT_DISABLE: user_soft_disable_alert("Seatbelt Unlatched"),
+    #ET.NO_ENTRY: NoEntryAlert("Seatbelt Unlatched"),
   },
 
   EventName.espDisabled: {
-    ET.SOFT_DISABLE: soft_disable_alert("Electronic Stability Control Disabled"),
-    ET.NO_ENTRY: NoEntryAlert("Electronic Stability Control Disabled"),
+    #ET.SOFT_DISABLE: soft_disable_alert("Electronic Stability Control Disabled"),
+    #ET.NO_ENTRY: NoEntryAlert("Electronic Stability Control Disabled"),
   },
 
   EventName.lowBattery: {
